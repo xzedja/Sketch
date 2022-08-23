@@ -6,15 +6,17 @@ let enableColorChange = false;
 function createTiles() {
     let size = 16;
     let container = document.getElementById('tiles-box');
+    deleteTiles(container);
 
     container.style.setProperty('--grid-rows', size);
     container.style.setProperty('--grid-cols', size);
+
     for (let i = 0; i < size*size; i++) {
 
         let tile = document.createElement("div");
         tile.setAttribute("id", "tile");
-        tile.addEventListener('click', enableColor);
         tile.addEventListener('mouseover', changeColor);
+        tile.addEventListener('click', enableColor);
         container.appendChild(tile).className = "tile";
     }
 }
@@ -29,5 +31,11 @@ function enableColor(event) {
         enableColorChange = true;
     } else {
         enableColorChange = false;
+    }
+}
+
+function deleteTiles(container) {
+    while (container.hasChildNodes()) {
+        container.removeChild(container.firstChild);
     }
 }

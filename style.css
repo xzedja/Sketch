@@ -1,13 +1,19 @@
 body {
     background-color: #c8b7a6;
-    font-family: Trattatelo, fantasy;
+    font-family: Snell Roundhand, cursive;
 }
 .create {
     display: flex;
     justify-content: center;
     width: auto;
     border: 1px solid #000;
+}
 
+.page-title h1 {
+    display:flex;
+    justify-content: center;
+    font-size: 70px;
+    border: 1px solid #000;
 }
 
 .tiles-container {
