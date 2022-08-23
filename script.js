@@ -13,8 +13,6 @@ function createTiles() {
 
         let tile = document.createElement("div");
         tile.setAttribute("id", "tile");
-        // tile.setAttribute("width", tileSize);
-        // tile.setAttribute("height", tileSize);
         tile.addEventListener('click', enableColor);
         tile.addEventListener('mouseover', changeColor);
         container.appendChild(tile).className = "tile";
