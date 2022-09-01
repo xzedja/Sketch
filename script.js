@@ -36,17 +36,17 @@ function createTiles() {
 }
 
 function changeColor(event) {
+    currentColor = event.target.style.background;
     if (enableColorChange == true) {
         
         event.target.style.background = "#AD5EA7";
         if (randomColors)
             event.target.style.background = "#" + Math.floor(Math.random()*16777215).toString(16);
         else if (darkerColor) {
-            event.target.style.filter = "grayscale(10%)"
+            event.target.style.background = darkenColor(currentColor);
+            console.log(event.target.style.background);
         }
     } 
-            
-    
 }
 
 function enableColor(event) {
@@ -77,4 +77,45 @@ randomButton.addEventListener('click', event => {
 let darkerButton = document.getElementById("dark");
 darkerButton.addEventListener('click', event => {
     darkerColor = !darkerColor;
+    console.log(darkerColor);
 })
+
+function darkenColor(rgb) {
+    let rgbArray = rgb.replace(/ /g, '').slice(4, -1).split(',').map(e => parseInt(e));
+    console.log(rgbArray)
+    let [lowest,middle,highest]=getLowestMiddleHighest(rgbArray);
+    if(highest.val===0){
+        return rgb;
+      }
+    
+      
+      let returnArray = [];
+      returnArray[highest.index] = highest.val-(Math.min(highest.val,25.5));
+       let decreaseFraction  =(highest.val-returnArray[highest.index])/ (highest.val);
+      returnArray[middle.index]= middle.val -middle.val*decreaseFraction; 
+      returnArray[lowest.index]= lowest.val -lowest.val*decreaseFraction;                                       
+      
+      // Convert the array back into an rgb string
+      return (`rgb(${returnArray.join()}) `);
+}
+
+function getLowestMiddleHighest(rgbIntArray) {
+    let highest = {val:-1,index:-1};
+    let lowest = {val:Infinity,index:-1};
+  
+    rgbIntArray.map((val,index)=>{
+      if(val>highest.val){
+        highest = {val:val,index:index};
+      }
+      if(val<lowest.val){
+         lowest = {val:val,index:index};
+      }
+    });
+    if(lowest.index===highest.index){
+      lowest.index=highest.index+1;
+    }
+    let middle = {index: (3 - highest.index - lowest.index)};
+    middle.val = rgbIntArray[middle.index];
+    console.log([lowest,middle,highest]);
+    return [lowest,middle,highest];
+  }
