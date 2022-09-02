@@ -66,11 +66,6 @@ function deleteTiles(container) {
 let randomButton = document.getElementById("random");
 randomButton.addEventListener('click', event => {
     randomColors = !randomColors;
-    // if (randomColors) {
-    //     randomColors = false;
-    // } else {
-    //     randomColors = true;
-    // }
     console.log(randomColors);
 })
 
