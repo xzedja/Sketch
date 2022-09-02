@@ -9,15 +9,32 @@
         <div class="page-title">
             <h1 class="title">Sketch-Etch</h1>
         </div>
-        <div class="create">
+        <!-- <div class="create">
             <button id="create-tiles">Tiles</button>
-        </div>
+        </div> -->
         <div class="tiles-container">
             <div class="options">
-                <div class="square"><button id="random">Random Color</button></div>
-                <div class="square"><input type="text" id="sizing"></div>
-                <div class="square"><button id="dark">Darker Color</button></div>
-                <div class="square"></div>
+                <div class="square">
+                    <div class="options-child">
+                        <h4>Grid Size</h4>
+                        <input type="text" id="sizing">
+                    </div>
+                </div>
+                <div class="square">
+                    <div class="options-child">
+                        <button id="random">Random Color</button>
+                    </div>
+                </div>
+                <div class="square">
+                    <div class="options-child">
+                        <button id="create-tiles">Grid Tiles</button>
+                    </div>
+                </div>
+                <div class="square">
+                    <div class="options-child">
+                        <button id="dark">Darker Color</button>
+                    </div>
+                </div>
             </div>
             <div class="tiles-box" id="tiles-box">
 

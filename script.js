@@ -4,7 +4,7 @@ tiles.addEventListener('click', createTiles);
 
 let sizeChange = document.getElementById("sizing");
 sizeChange.addEventListener('keypress' , event => {
-    if ((event.key =="Enter") && (event.target.value < 0 || event.target.value > 100)) {
+    if ( (event.target.value.match(/^[a-zA-Z]+$/)) || (event.key =="Enter") && (event.target.value < 0 || event.target.value > 100)) {
         alert("Value must be between 1 and 100");
         event.target.value = 0;
     } else {
